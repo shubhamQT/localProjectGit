@@ -103,7 +103,7 @@ jobs:
           [ -n "$WORKERS" ] && EXTRA_ARGS="$EXTRA_ARGS --workers=$WORKERS"
           [ -n "$RETRIES" ] && EXTRA_ARGS="$EXTRA_ARGS --retries=$RETRIES"
           [ "$FULLY_PARALLEL" = "true" ] && EXTRA_ARGS="$EXTRA_ARGS --fully-parallel"
-          [ -n "$BROWSER" ] && EXTRA_ARGS="$EXTRA_ARGS --browser=$BROWSER"
+          export AUTOM_BROWSER="$BROWSER"
           if [ -n "$GREP_PATTERN" ]; then
             npx playwright test $SPEC_PATHS_ARG --grep "$GREP_PATTERN" $EXTRA_ARGS
           else

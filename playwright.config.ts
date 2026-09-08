@@ -15,7 +15,11 @@ try {
   console.warn(`[playwright] environments/${envName}.json not found — using built-in defaults`);
 }
 
-const browser = (String(env.browser ?? "chromium")) as "chromium" | "firefox" | "webkit";
+// AUTOM_BROWSER (set by a per-run override, local or CI) takes priority over the
+// environment's own browser field. Read here, not passed as a Playwright CLI flag —
+// --browser and --project are both rejected by Playwright whenever the config defines
+// a projects array (which this one always does), so the override has to happen here.
+const browser = (String(process.env.AUTOM_BROWSER || env.browser || "chromium")) as "chromium" | "firefox" | "webkit";
 
 // Disable web security and sandbox restrictions in CI environments
 const isCI = Boolean(process.env.CI);

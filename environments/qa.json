@@ -1,9 +1,9 @@
 {
   "name": "qa",
   "slug": "qa",
-  "baseURL": "https://www.saucedemo.com/",
-  "username": "standard_user",
-  "password": "secret_sauce",
+  "baseURL": "https://autonix.qtsolvdev.com/",
+  "username": "test.projectowner@gmail.com",
+  "password": "Test@1234",
   "browser": "chromium",
   "headless": true,
   "timeout": 30000,

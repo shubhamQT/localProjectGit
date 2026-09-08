@@ -1,0 +1,79 @@
+{
+  "id": "662347a8-27a4-4508-bca2-8a1f0eedacd7",
+  "testPlanId": "50eff9a2-4a9a-426a-8e16-dfa4a5980636",
+  "requirementId": "9c04f31a-cd93-4ae7-877d-87171e935912",
+  "suiteName": "Login to Autonix",
+  "case": {
+    "id": "662347a8-27a4-4508-bca2-8a1f0eedacd7",
+    "title": "Login as Project Owner",
+    "priority": "P0",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [
+      "User should have valid login creads and role as project owner"
+    ],
+    "steps": [
+      {
+        "id": "step1",
+        "action": "openUrl",
+        "targetDescription": "url",
+        "screenName": "Autonix",
+        "pageObjectMethod": "expectSignInVisible",
+        "value": "{{env.baseURL}}"
+      },
+      {
+        "id": "step2",
+        "action": "assertVisible",
+        "targetDescription": "login",
+        "screenName": "Autonix",
+        "pageObjectMethod": "expectSignInVisible"
+      },
+      {
+        "id": "step3",
+        "action": "tap",
+        "targetDescription": "sign in",
+        "screenName": "Autonix",
+        "pageObjectMethod": "clickSignIn"
+      },
+      {
+        "id": "step4",
+        "action": "assertVisible",
+        "targetDescription": "email",
+        "screenName": "Login",
+        "pageObjectMethod": "expectSignInVisible"
+      },
+      {
+        "id": "step5",
+        "action": "tap",
+        "targetDescription": "email",
+        "screenName": "Login",
+        "pageObjectMethod": "fillLoginEmail",
+        "value": "{{env.username}}"
+      },
+      {
+        "id": "step6",
+        "action": "fill",
+        "targetDescription": "password",
+        "screenName": "Login",
+        "pageObjectMethod": "fillLoginPassword",
+        "value": "{{env.password}}"
+      },
+      {
+        "id": "step7",
+        "action": "tap",
+        "targetDescription": "signin button",
+        "screenName": "Login",
+        "pageObjectMethod": "clickLoginSubmit"
+      },
+      {
+        "id": "step8",
+        "action": "assertVisible",
+        "targetDescription": "dashboard",
+        "screenName": "Dashboard",
+        "pageObjectMethod": "expectAutonixLogoVisible"
+      }
+    ],
+    "tags": []
+  }
+}

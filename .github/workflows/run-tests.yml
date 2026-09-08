@@ -85,7 +85,16 @@ jobs:
           RESPONSE=$(curl -sf "${{ inputs.auth_state_url }}")
           echo "$RESPONSE" | jq -r '.content' > ".auth/${{ inputs.auth_state_filename }}"
 
-      - run: npx playwright install --with-deps chromium
+      - name: Install Playwright browser
+        env:
+          BROWSER: ${{ inputs.browser }}
+          ENVIRONMENT: ${{ inputs.environment }}
+        run: |
+          BROWSER_TO_INSTALL="${BROWSER:-}"
+          if [ -z "$BROWSER_TO_INSTALL" ]; then
+            BROWSER_TO_INSTALL=$(node -e "try{console.log(require('./environments/${ENVIRONMENT:-qa}.json').browser||'chromium')}catch(e){console.log('chromium')}" 2>/dev/null || echo chromium)
+          fi
+          npx playwright install --with-deps "$BROWSER_TO_INSTALL"
 
       - name: Run tests
         env:

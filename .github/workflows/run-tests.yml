@@ -72,8 +72,8 @@ jobs:
 
       - name: Configure Autonix registry
         run: |
-          npm config set @autonix:registry http://localhost:4873/
-          npm config set "//localhost:4873/:_authToken" "$AUTONIX_REGISTRY_TOKEN"
+          npm config set @autonix:registry https://artifact-keeper.qtsolvdev.com/npm/qa-automation-libraries/
+          npm config set "//artifact-keeper.qtsolvdev.com/npm/qa-automation-libraries/:_authToken" "$AUTONIX_REGISTRY_TOKEN"
 
       - name: Install dependencies
         run: if [ -f package-lock.json ]; then npm ci; else npm install; fi

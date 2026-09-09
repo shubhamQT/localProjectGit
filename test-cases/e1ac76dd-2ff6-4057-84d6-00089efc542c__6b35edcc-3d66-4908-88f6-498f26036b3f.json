@@ -1,0 +1,85 @@
+{
+  "id": "6b35edcc-3d66-4908-88f6-498f26036b3f",
+  "testPlanId": "e1ac76dd-2ff6-4057-84d6-00089efc542c",
+  "requirementId": "e4d0c66a-9a46-4124-be80-d6e53beefe90",
+  "suiteName": "Validate create project",
+  "case": {
+    "id": "6b35edcc-3d66-4908-88f6-498f26036b3f",
+    "title": "Validate Project create button",
+    "priority": "P1",
+    "platforms": [
+      "firefox"
+    ],
+    "preconditions": [
+      "User should have account and role as project owner"
+    ],
+    "steps": [
+      {
+        "id": "step1",
+        "action": "openUrl",
+        "targetDescription": "baseurl",
+        "screenName": "Autonix",
+        "value": "{{env.baseURL}}"
+      },
+      {
+        "id": "step2",
+        "action": "assertVisible",
+        "targetDescription": "sign in",
+        "screenName": "Autonix",
+        "pageObjectMethod": "expectSignInVisible"
+      },
+      {
+        "id": "step3",
+        "action": "tap",
+        "targetDescription": "sign in",
+        "screenName": "Autonix",
+        "pageObjectMethod": "clickSignIn"
+      },
+      {
+        "id": "step4",
+        "action": "assertVisible",
+        "targetDescription": "email",
+        "screenName": "Login",
+        "pageObjectMethod": "expectLoginEmailVisible"
+      },
+      {
+        "id": "step5",
+        "action": "fill",
+        "targetDescription": "email",
+        "screenName": "Login",
+        "pageObjectMethod": "fillLoginEmail",
+        "value": "{{env.username}}"
+      },
+      {
+        "id": "step6",
+        "action": "fill",
+        "targetDescription": "password",
+        "screenName": "Login",
+        "pageObjectMethod": "fillLoginPassword",
+        "value": "{{env.password}}"
+      },
+      {
+        "id": "step7",
+        "action": "tap",
+        "targetDescription": "sign in",
+        "screenName": "Login",
+        "pageObjectMethod": "clickSignIn"
+      },
+      {
+        "id": "step8",
+        "action": "assertVisible",
+        "targetDescription": "autonix logo",
+        "screenName": "Dashboard",
+        "pageObjectMethod": "expectAutonixLogoVisible"
+      },
+      {
+        "id": "step9",
+        "action": "assertVisible",
+        "targetDescription": "create project button",
+        "screenName": "Dashboard",
+        "pageObjectMethod": "expectCreateProjectFormVisible"
+      }
+    ],
+    "tags": []
+  }
+}

@@ -63,12 +63,12 @@ export class AutonixPage {
   constructor(private readonly page: Page) {}
 
   /** "Sign in" matches 2 elements with the exact same locator (e.g. a repeated list/feed item) — pass index (0-based, default 0) to pick a specific occurrence. No distinguishing context was found between occurrences — check the page manually to know which is which. */
-  async clickSignIn(index = 0): Promise<void> {
-    await clickWhenVisible(webLocator(this.page, { ...AutonixPage.L.signIn, index }));
+  async clickSignIn(): Promise<void> {
+    await clickWhenVisible(webLocator(this.page, { ...AutonixPage.L.signIn }));
   }
 
-  async expectSignInVisible(timeoutMs = 30_000, soft = true, index = 0): Promise<void> {
-    await expectVisible(webLocator(this.page, { ...AutonixPage.L.signIn, index }), timeoutMs, soft);
+  async expectSignInVisible(timeoutMs = 30_000, soft = true): Promise<void> {
+    await expectVisible(webLocator(this.page, { ...AutonixPage.L.signIn }), timeoutMs, soft);
   }
 
   async clickGetStarted(): Promise<void> {
